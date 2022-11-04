@@ -30,8 +30,10 @@ public class SensorData implements Serializable {
     @Column(name = "sensor_gross_value")
     private String sensorGrossValue;
 
+    @Column(name = "created_at")
     private String createdAt;
 
+    @Column(name = "updated_at")
     private String updatedAt;
 
     @ManyToOne
