@@ -39,3 +39,8 @@ INSERT INTO tb_sensor (
         place_id
     )
 VALUES ('Sensor 3', 'Sensor 3', 0, 0, 3, 3);
+INSERT INTO tb_user (user_name, password)
+VALUES (
+        'admin',
+        '$2a$10$uQx0Qwd9Y8MVUgtY6telb.mbMZ2koQTe4By70DLdFnXVrCvo9b/Ta'
+    );
