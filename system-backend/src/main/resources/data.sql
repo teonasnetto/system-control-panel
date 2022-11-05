@@ -51,3 +51,13 @@ VALUES (
         -- secreta
         '$2a$10$K5caYuqCudG1cpmXyjzoBuOXOMQsZgLnFPqBz62LrV4N3ALRhqX3a'
     );
+INSERT INTO tb_roles (role_name)
+VALUES ('ROLE_ADMIN');
+INSERT INTO tb_roles (role_name)
+VALUES ('ROLE_USER');
+INSERT INTO tb_user_has_roles (user_id, role_id)
+VALUES (1, 1);
+INSERT INTO tb_user_has_roles (user_id, role_id)
+VALUES (2, 2);
+INSERT INTO tb_user_has_roles (user_id, role_id)
+VALUES (1, 2);
