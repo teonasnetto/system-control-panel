@@ -60,7 +60,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
                         .mvcMatchers("/token").permitAll()
-                        .antMatchers("/**").permitAll()
+                        .mvcMatchers("/**").permitAll()
+                        .mvcMatchers("/sensors").hasAuthority("SCOPE_admin")
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)

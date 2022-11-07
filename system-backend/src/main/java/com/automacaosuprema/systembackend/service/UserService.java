@@ -3,6 +3,7 @@ package com.automacaosuprema.systembackend.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,8 +30,12 @@ public class UserService implements UserDetailsService {
         }
         logger.info("username found: " + username);
         UserDetails userDetails = User.withUsername(user.getUsername()).password(user.getPassword())
-                .authorities("admin").build();
+                .authorities(user.getAuthorities()).build();
         return userDetails;
+    }
+
+    public GrantedAuthoritiesMapper grantedAuthoritiesMapper() {
+        return authorities -> authorities;
     }
 
 }
