@@ -22,7 +22,6 @@ public class Role {
     private Long id;
 
     @Column(name = "role_name", unique = true)
-    // @ManyToMany(mappedBy = "roles")
     private String role;
 
     public Role(Long id) {

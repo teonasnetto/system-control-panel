@@ -29,6 +29,8 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("username not found");
         }
         logger.info("username found: " + username);
+        // Dar o build no sistema com o UserDetails para não criar uma implementação do
+        // usuário separado
         UserDetails userDetails = User.withUsername(user.getUsername()).password(user.getPassword())
                 .authorities(user.getAuthorities()).build();
         return userDetails;

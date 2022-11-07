@@ -60,6 +60,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
                         .mvcMatchers("/token").permitAll()
+                        // permitindo todas rotas somente para testes
                         .mvcMatchers("/**").permitAll()
                         .mvcMatchers("/sensors").hasAuthority("SCOPE_admin")
                         .anyRequest().authenticated())
@@ -68,6 +69,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    // Bean para usar o h2 e não atrapalhar o spring security
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()

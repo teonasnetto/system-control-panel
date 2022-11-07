@@ -3,8 +3,6 @@ package com.automacaosuprema.systembackend.resources;
 import java.util.Collections;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,7 +16,6 @@ import com.automacaosuprema.systembackend.service.TokenService;
 
 @RestController
 public class AuthController {
-    private static final Logger LOG = LoggerFactory.getLogger(AuthController.class);
 
     private final TokenService tokenService;
     private final AuthenticationManager authenticationManager;
@@ -34,7 +31,6 @@ public class AuthController {
                 .authenticate(
                         new UsernamePasswordAuthenticationToken(userLogin.getUsername(), userLogin.getPassword()));
         String token = tokenService.generateToken(authentication);
-        LOG.info(authentication.getAuthorities().toString());
         return Collections.singletonMap("token", token);
     }
 }
